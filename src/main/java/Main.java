@@ -1,7 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        Conta cc = new ContaCorrente();
-        Conta cp = new ContaPoupanca();
+        IConta cc = new ContaCorrente();
+        cc.depositar(100);
+
+        IConta cp = new ContaPoupanca();
+        cc.transferir(100, cp);
 
         cc.imprimirExtrato();
         cp.imprimirExtrato();
