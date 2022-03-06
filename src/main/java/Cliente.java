@@ -1,7 +1,17 @@
+import java.math.BigInteger;
+
 public class Cliente {
 
     private String nome;
-    private long cpf;
+    private String cpf;
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nome='" + nome + '\'' +
+                ", cpf=" + cpf +
+                '}';
+    }
 
     public String getNome() {
         return nome;
@@ -11,11 +21,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 }

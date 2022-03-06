@@ -1,15 +1,16 @@
 public abstract class Conta implements IConta{
 
     private static final int AGENCIA_PADRAO = 1;
-    private static int SEQUENCIAL = 1;
+    //private static int SEQUENCIAL = 1;
     protected int agencia;
     protected int conta;
     protected double saldo;
-    //private String tipo;
+    protected Cliente cliente;
 
-    public Conta(){
-        this.agencia = agencia;
-        this.conta = SEQUENCIAL++;
+    public Conta (Cliente cliente){
+        this.agencia = AGENCIA_PADRAO;
+        //this.conta = SEQUENCIAL++;
+        this.cliente = cliente;
     }
 
     public int getAgencia() {
@@ -39,14 +40,15 @@ public abstract class Conta implements IConta{
     }
 
     @Override
-    public void transferir(double valor, Conta contaDestino) {
+    public void transferir(double valor, IConta contaDestino) {
         this.sacar(valor);
         contaDestino.depositar(valor);
     }
 
     protected void imprimirExtratoConta() {
-        System.out.printf("Agencia: %d\n", this.agencia);
-        System.out.printf("Conta: %d\n", this.conta);
+        System.out.printf("=== Titular: %s ===\n", this.cliente.getNome());
         System.out.printf("Saldo: %.2f\n", this.saldo);
+        System.out.printf("Agencia: %d\n", this.agencia);
+
     }
 }
